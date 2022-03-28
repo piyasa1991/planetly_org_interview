@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "perseus_interview"
+version = "0.1.0"
+description = "Challenge: User service"
+authors = ["Piyasa Basak <piyasa.basak@ambrosys.de>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.75.0"
+uvicorn = "^0.17.6"
+SQLAlchemy = "^1.4.32"
+psycopg2-binary = "^2.9.3"
+pytest = "^7.1.1"
+requests = "^2.27.1"
+email-validator = "^1.1.3"
+alembic = "^1.7.7"
+pytest-cov = "^3.0.0"
+pandas = "^1.4.1"
+
+[tool.poetry.dev-dependencies]
+black = "^22.1.0"
+reorder-python-imports = "^3.0.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 111
+exclude = '''
+/(
+    \.git
+  | \.mypy_cache
+  | \.venv
+  | build
+  | dist
+)/
+'''
+

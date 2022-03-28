@@ -1,0 +1,5 @@
+.vscode/
+**/**/__pycache__/
+tt.session.sql
+.pytest_cache/
+/home/piyasa/Documents/personal/interview materials/planetly_org_interview/backend/interview_app/db/data/GlobalLandTemperaturesByCity.csv

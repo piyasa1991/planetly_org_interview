@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:12.9-alpine
+    ports:
+      - 5432:5432
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+    command: bash -c "alembic upgrade head && uvicorn interview_app.main:app --host 0.0.0.0 --port 8000 --reload"
+    env_file: .env
+    depends_on:
+      - db
+      - test_db
+    ports:
+      - 8000:8000
+    volumes:
+      - ./backend:/app
+
+  test_db:
+    environment:
+      - POSTGRES_PASSWORD=mysecretpass
+    image: postgres:12.9-alpine
+    restart: always
+
+volumes:
+  dbdata:
