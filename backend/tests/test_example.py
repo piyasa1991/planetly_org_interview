@@ -33,7 +33,6 @@ def test_create_temperature(client, db_session):
 
 
 def test_update_temperature(client, db_session):
-    last_
     temperature_json = {
         "average_temperature": 0.5,
         "average_temperature_uncertainty": 0,

@@ -19,17 +19,10 @@ services:
     env_file: .env
     depends_on:
       - db
-      - test_db
     ports:
       - 8000:8000
     volumes:
       - ./backend:/app
-
-  test_db:
-    environment:
-      - POSTGRES_PASSWORD=mysecretpass
-    image: postgres:12.9-alpine
-    restart: always
 
 volumes:
   dbdata:
