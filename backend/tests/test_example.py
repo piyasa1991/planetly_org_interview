@@ -36,7 +36,7 @@ def test_update_temperature(client, db_session):
     last_
     temperature_json = {
         "average_temperature": 0.5,
-        "average_temperature_uncertainty": 2.5,
+        "average_temperature_uncertainty": 0,
         "dt": datetime(2022, 3, 1).isoformat(),
     }
     response = client.put(f"{CITIES_ROUTE}/1/temperature", json=temperature_json)
@@ -62,12 +62,11 @@ def test_sytem(client, db_session):
 
     city_id = int(data["id"])
     average_temperature = data["temperature"]["average_temperature"] + 0.1
-    average_temperature_uncertainty = data["temperature"]["average_temperature_uncertainty"] + 0.1
     dt = datetime(2022, 3, 1).isoformat()
 
     temperature_json = {
         "average_temperature": average_temperature,
-        "average_temperature_uncertainty": average_temperature_uncertainty,
+        "average_temperature_uncertainty": 0.1,
         "dt": dt,
     }
 
@@ -84,9 +83,8 @@ def test_sytem(client, db_session):
     )
 
     average_temperature = temperature_in_db.average_temperature - 2.5
-    average_temperature_uncertainty = temperature_in_db.average_temperature_uncertainty - 2.5
     temperature_json["average_temperature"] = average_temperature
-    temperature_json["average_temperature_uncertainty"] = average_temperature_uncertainty
+    temperature_json["average_temperature_uncertainty"] = 0.0
 
     response = client.put(f"{CITIES_ROUTE}/{city_id}/temperature", json=temperature_json)
 
