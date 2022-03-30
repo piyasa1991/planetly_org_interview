@@ -2,8 +2,8 @@
 
 ## How to build
 
-cp
 ```bash
+cd planetly_org_interview
 docker-compose build
 ```
 ## Prepare data loading
