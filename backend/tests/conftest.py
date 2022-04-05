@@ -23,9 +23,6 @@ def connection(engine):
     connection = engine.connect()
     trans = connection.begin()
     yield connection
-    import pdb
-
-    pdb.set_trace()
     trans.rollback()
     connection.close()
 

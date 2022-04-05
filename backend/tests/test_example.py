@@ -20,7 +20,6 @@ def test_create_temperature(client, db_session):
     }
 
     response = client.post(f"{CITIES_ROUTE}/1/temperature", json=temperature_json)
-    import pdb
 
     assert response.status_code == 201
     data = response.json()
@@ -70,7 +69,6 @@ def test_sytem(client, db_session):
     }
 
     response = client.post(f"{CITIES_ROUTE}/{city_id}/temperature", json=temperature_json)
-    import pdb
 
     assert response.status_code == 201
     data = response.json()
